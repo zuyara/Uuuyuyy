@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <script>
+    function shortenUrl() {
+      var urlInput = document.getElementById("url");
+      var url = urlInput.value;
+      var apiUrl = "https://kingurl.xyz/api.php?url=" + encodeURIComponent(url);
+
+      // Define the keywords to match against
+      var keywords = [
+          "189230", //Ahsan Habib
+          "9hxwkwz",
+          "210665",
+          "191441",
+          "192356",
+          "182882", //jahirul vai
+          "182847",
+          "176457",
+          "164316",
+          "164855",
+          "192517",
+          "206641", //sabuz
+          "210080",
+          "211906",
+          "212002",
+          "182242", //imran
+          "189572",
+          "189574",
+          "181686",
+          "187089",
+          "183190",
+          "180284",
+          "190646",
+          "190637",
+          "182629",
+          "168792",
+          "183190",
+          "191662",
+          "170068",
+          "192787",
+          "akpiPaZNuW48tx",
+          "182012",
+		  "193110",
+          "191824", //Asad
+          "190964",
+          "190221",
+          "192233",
+          "x8EhYy15s3okUA",
+          "eRTW6d9TDNyTA",
+          "178709", //Ridoy
+          "191287",
+          "172533",
+          "183082", //rishad v imran
+          "192943", // v imran 
+          "189821", // Shuvo
+          "188152",
+          "159713", // Shamim
+          "demo"
+          ];
+
+      // Check if the URL contains any of the keywords
+      var matchFound = keywords.some(keyword => url.includes(keyword));
+
+      if (matchFound) {
+        // If a match is found, make the API request and submit the form
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            urlInput.value = data.shorturl;
+            document.getElementById("shorten-form").submit();
+          })
+          .catch(error => console.error(error));
+      } else {
+        // If no match is found, display an error message
+        alert("Your CPA profile is not registered here");
+      }
+    }
+  </script>
+</head>
+<body>
+  <center>
+    <h1><a href="index.php" style="text-decoration: none; color: #009933; font-family: Arial, sans-serif;">URL Shortener</a></h1>
+  </center>
+  <form id="shorten-form" method="post" action="shorten.php">
+    <label for="url">Enter your URL:</label>
+    <input type="text" id="url" name="url" placeholder="Enter long URL">
+    <center><button type="button" onclick="shortenUrl()">Shorten</button></center>
+  </form>
+  <div class="container">
+      <!-- existing code -->
+      <div class="social-links">
+        <a href="https://www.facebook.com/rakhib420" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=8801797951359&text=Hello,%20I'm%20interested%20on%20your%20services." target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <center>
+        <p>Last Update: 5 May 2023 8:03 PM</p>
+      </center>
+    </div>
+</body>
+</html>
